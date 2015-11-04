@@ -9,12 +9,105 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Skills', 'Rating'],
+          ['CoreJava', 9],
+          ['Spring', 7],
+          ['Hibernate ', 7],
+          ['JavaScript', 4],
+          ['HTML,CSS', 5]
+        ]);
+		
+		var options = {
+          title: 'My SkillSet',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'My SkillSet',
+                   subtitle: 'learning towards Full Stack Development' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Out of 10'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+     // var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+	  var chart = new google.charts.Bar(document.getElementById('dual_y_div'));
+      chart.draw(data, options);
+    };
+    </script>
+	
+	<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	jQuery.githubUser = function(username, callback) {
+	jQuery.getJSON('https://api.github.com/users/'+username+'/repos?callback=?',callback)
+}
+ 
+	jQuery.fn.loadRepositories = function(username) {
+		this.html("<span>Querying GitHub for " + username +"'s repositories...</span>");
+     
+    var target = this;
+		$.githubUser(username, function(data) {
+			var repos = data.data; // JSON Parsing
+			sortByName(repos);    
+     
+			var list = $('<dl/>');
+			target.empty().append(list);
+			$(repos).each(function() {
+				if (this.name != (username.toLowerCase()+'.github.com')) {
+					list.append('<dt><a href="'+ (this.homepage?this.homepage:this.html_url) +'">' + this.name + '</a> <em>'+(this.language?('('+this.language+')'):'')+'</em></dt>');
+					list.append('<dd>' + this.description +'</dd>');
+				}
+			});      
+		});
+      
+    function sortByName(repos) {
+        repos.sort(function(a,b) {
+			return a.name - b.name;
+        });
+    }
+	};
+	
+    $(function() {
+        $("#my-github-projects").loadRepositories("Omnamasivayam");
+    });
+	</script>
 	<style>
+	  h1 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 5px;      
+      font-size: 20px;
+	  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+      color: #333333;
+     }
+	 
+	 .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+	 }
+	 .bg-1 h3 {color: #fff;}
+	 .bg-1 p {font-style: italic;}
+
+	 
+	 .bg-3 {
+      background: #F5F6CE;
+      color: #2d2d30;
+	 }
+	 .bg-1 h3 {color: #fff;}
+	 .bg-1 p {font-style: italic;}
 	</style>
-
+	
 </head>
-
-<nav class="navbar navbar-default">
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Omnamasivayam</a>
@@ -22,8 +115,7 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Profile</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#">Projects</a></li> 
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#achievements">Achievements</a></li> 
 		<li><a href="Resume.pdf" target="_blank" >My Resume PDF</a></li> 
 		<li><a href="#">Git Repositories</a></li>
@@ -33,28 +125,84 @@
 </nav>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center">
+<div id=about class="bg-1" style="width: 100%; height: 100%;">
+<div class="container text-center" >
+  <div style="width: 50px; height: 50px;"></div>
   <h2 class="margin">Profile</h2>
   <img src="pic.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="150" height="150">
-  <h3>* Aspiring to work on latest technologies and develop applications, preferably java based web applications</h3>
-  <h3>* Experience in developing various web based applications using frameworks like Hibernate 3.2 and Spring 3.0.</h3>
-  <h3>* An learner trying to be an full stack developer</h3>
+  <h3>Web Application Developer</h3>
+</div> 
 </div>
 
 <!-- Second Container -->
 
-<div id="experience" class="container-fluid bg-2 text-center">
-  <h2 class="margin">Experience</h2>
-  <h3>Qualified Java developer with over 4 years of experience in Wipro Technologies, developing and maintaining Java/J2EE applications </h3>
+<div id=skill class="bg-2">
+<div id="skills" class="container text-center">
+<div>
+	<h1> When love and skill work together, expect a masterpiece.</h1>
 </div>
+<div id="dual_y_div" style="width: 450px; height: 250px;"></div>
+</div>
+</div>
+
 
 <!-- Third Container -->
+<div id=achievement class="bg-3">
+<div id="achievements" class="container text-center">
+<h1>The reward for work well done is the opportunity to do more</h1>
+<div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>"UBER COOL"</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="badge.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>2013</p>
+        <p>Wipro Technologies</p>
+        <p>Interpersonal Skills</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>"HIGH FLYER"</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="badge.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>2014</p>
+        <p>Wipro Technologies</p>
+        <p>Project Performance</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>"CODE NINJA"</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="badge.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>2014</p>
+        <p>Wipro Technologies/HackerEarth</p>
+        <p>Coding-Algorithm Competition</p>
+      </div>
+    </div>
+  </div>
 
-<div id="achievements" class="container-fluid bg-2 text-center">
-  <h2 class="margin">Achievements</h2>
-  <h3>* Awarded “Code Ninja” in the Event "Code Storm", a Wipro wide event with 4000 registrations across Wipro, conducted during June 2014 to solve "programming algorithmic problems" of various difficulties, in which I had secured 15th Rank with a percentage around 99%.</h3>
-  <h3>* Awarded “UBER COOL” Award by Wipro during the year 2013 as a recognition for my interpersonal skills and for my efforts towards the team over organizing innovative events weekly/monthly in such a way that it improves our team bonding and enthusiasm.</h3>
-  <h3>* Awarded “HIGH FLYER” Award by Wipro during the year 2014 for my highly valued technical contribution towards the project and for quickly developing/resolving critical customer requirements.</h3>
+</div>
 </div>
 
+
+
+<!-- Fourth Container -->
+
+<div id=git class="bg-4">
+<div id="skills" class="container text-center">
+<div>
+	<h1> My Current Experiments</h1>
+</div>
+<div id="my-github-projects" ></div>
+
+</div>
+</div>
+
+
+</body>
 </html>
