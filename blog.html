@@ -7,9 +7,36 @@
 	 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700">
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
+	
     <script type="text/javascript">
       google.load("visualization", "1.1", {packages:["bar"]});
       google.setOnLoadCallback(drawStuff);
@@ -85,48 +112,67 @@
 	</script>
 	<style>
 	  h1 {
-      margin: 10px 0 30px 0;
-      letter-spacing: 5px;      
-      font-size: 20px;
-	  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
-      color: #333333;
+		padding-top: 70px;
+		margin: 10px 0 30px 0;
+		letter-spacing: 5px;      
+		font-size: 20px;
+		font-family: 'Pacifico', cursive;
+		color: #333333;
      }
-	 
-	 .bg-1 {
-      background: #2d2d30;
-      color: #bdbdbd;
+	 .bg-5 { 
+      background-color: #2f2f2f;
+      color: #ffffff;
+	}
+	
+	 h2, h3 {
+		padding-top: 70px;
+		font-family: 'Pacifico', cursive;
 	 }
-	 .bg-1 h3 {color: #fff;}
-	 .bg-1 p {font-style: italic;}
-
 	 
-	 .bg-3 {
-      background: #F5F6CE;
-      color: #2d2d30;
-	 }
-	 .bg-1 h3 {color: #fff;}
-	 .bg-1 h2 {color: #fff;}
-	 .bg-1 p {font-style: italic;}
-	 
-
+	@media (max-width: 767px) /* @grid-float-breakpoint -1 */
+		{
+		.navbar-fixed-top
+			{
+			position: relative;
+			top: auto;
+			}
+		}
 	</style>
 	
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">Omnamasivayam</a>
+		 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="sr-only">Toggle navigation</span>s
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+      <a class="navbar-brand" href="#about">Omnamasivayam</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li><a href="index.html">Profile</a></li>
-		<li><a href="blog">Blog</a></li>
+        <li><a href="#about">Profile</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li> 
+		<li><a href="Resume.pdf" target="_blank" >Resume</a></li> 
+		<li><a href="#git">Git</a></li>
+		<li><a href="blog.html">Blog</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
+<div id=blog class="bg-4">
+<div id="blog" class="container text-center">
+<div>
+	<h1> Coming Soon</h1>
+</div>
+
+</div>
+</div>
 
 
 </body>
